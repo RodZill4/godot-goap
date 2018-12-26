@@ -217,8 +217,6 @@ run_speed = 10.0
 [node name="ActionPlanner" type="Node" parent="Player" index="5"]
 
 script = ExtResource( 3 )
-state = ""
-goal = "wood_stored !hungry"
 
 [node name="store_wood" type="Node" parent="Player/ActionPlanner" index="0"]
 
@@ -236,82 +234,82 @@ preconditions = "has_axe sees_tree"
 effect = "sees_wood sees_fruit"
 cost = 1
 
-[node name="get_wood1" type="Node" parent="Player/ActionPlanner" index="2"]
+[node name="pickup_wood1" type="Node" parent="Player/ActionPlanner" index="2"]
 
 script = ExtResource( 4 )
-action = "get_wood"
+action = "pickup_wood"
 preconditions = "sees_wood !has_wood !has_fruit !has_axe"
 effect = "has_wood !has_fruit !has_axe"
 cost = 1
 
-[node name="get_wood2" type="Node" parent="Player/ActionPlanner" index="3"]
+[node name="pickup_wood2" type="Node" parent="Player/ActionPlanner" index="3"]
 
 script = ExtResource( 4 )
-action = "get_wood"
+action = "pickup_wood"
 preconditions = "sees_wood !has_wood has_fruit !has_axe"
 effect = "has_wood !has_fruit !has_axe sees_fruit"
 cost = 1
 
-[node name="get_wood3" type="Node" parent="Player/ActionPlanner" index="4"]
+[node name="pickup_wood3" type="Node" parent="Player/ActionPlanner" index="4"]
 
 script = ExtResource( 4 )
-action = "get_wood"
+action = "pickup_wood"
 preconditions = "sees_wood !has_wood !has_fruit has_axe"
 effect = "has_wood !has_fruit !has_axe sees_axe"
 cost = 1
 
-[node name="get_fruit1" type="Node" parent="Player/ActionPlanner" index="5"]
+[node name="pickup_fruit1" type="Node" parent="Player/ActionPlanner" index="5"]
 
 script = ExtResource( 4 )
-action = "get_fruit"
+action = "pickup_fruit"
 preconditions = "sees_fruit !has_fruit !has_wood !has_axe"
 effect = "has_fruit !has_axe !has_wood"
 cost = 1
 
-[node name="get_fruit2" type="Node" parent="Player/ActionPlanner" index="6"]
+[node name="pickup_fruit2" type="Node" parent="Player/ActionPlanner" index="6"]
 
 script = ExtResource( 4 )
-action = "get_fruit"
+action = "pickup_fruit"
 preconditions = "sees_fruit !has_fruit has_wood !has_axe"
 effect = "has_fruit !has_axe !has_wood sees_wood"
 cost = 1
 
-[node name="get_fruit3" type="Node" parent="Player/ActionPlanner" index="7"]
+[node name="pickup_fruit3" type="Node" parent="Player/ActionPlanner" index="7"]
 
 script = ExtResource( 4 )
-action = "get_fruit"
+action = "pickup_fruit"
 preconditions = "sees_fruit !has_fruit !has_wood has_axe"
 effect = "has_fruit !has_axe !has_wood sees_axe"
 cost = 1.0
 
-[node name="get_axe1" type="Node" parent="Player/ActionPlanner" index="8"]
+[node name="pickup_axe1" type="Node" parent="Player/ActionPlanner" index="8"]
 
 script = ExtResource( 4 )
-action = "get_axe"
+action = "pickup_axe"
 preconditions = "sees_axe !has_axe !has_fruit !has_wood"
 effect = "has_axe !has_fruit !has_wood"
 cost = 1
 
-[node name="get_axe2" type="Node" parent="Player/ActionPlanner" index="9"]
+[node name="pickup_axe2" type="Node" parent="Player/ActionPlanner" index="9"]
 
 script = ExtResource( 4 )
-action = "get_axe"
+action = "pickup_axe"
 preconditions = "sees_axe !has_axe has_fruit !has_wood"
 effect = "has_axe !has_fruit !has_wood sees_fruit"
 cost = 1
 
-[node name="get_axe3" type="Node" parent="Player/ActionPlanner" index="10"]
+[node name="pickup_axe3" type="Node" parent="Player/ActionPlanner" index="10"]
 
 script = ExtResource( 4 )
-action = "get_axe"
+action = "pickup_axe"
 preconditions = "sees_axe !has_axe !has_fruit has_wood"
 effect = "has_axe !has_fruit !has_wood sees_wood"
 cost = 1
 
-[node name="plant_fruit" type="Node" parent="Player/ActionPlanner" index="11"]
+[node name="grow_tree" type="Node" parent="Player/ActionPlanner" index="11"]
 
 script = ExtResource( 4 )
-action = "plant_fruit"
+action = "grow_tree"
 preconditions = "has_fruit"
 effect = "!has_fruit sees_growing_tree"
 cost = 1

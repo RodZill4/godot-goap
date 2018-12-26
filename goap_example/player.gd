@@ -10,6 +10,7 @@ var life = 100.0
 
 var held = null
 
+signal run_end
 signal action_end
 
 func _ready():
@@ -43,7 +44,7 @@ func _physics_process(delta):
 		var remaining = Vector2(target.x, target.z) - Vector2(translation.x, translation.z)
 		if remaining.length() < 0.8:
 			target = null
-			emit_signal("action_end")
+			emit_signal("run_end", true)
 			return
 		else:
 			direction = run_speed*(remaining).normalized()
@@ -69,7 +70,7 @@ func _physics_process(delta):
 			blocked_time += delta
 			if blocked_time > 3.0:
 				target = null
-				emit_signal("action_end")
+				emit_signal("run_end", false)
 	previous_position = translation
 	motion.x = h_motion.x
 	motion.z = h_motion.y
@@ -89,18 +90,14 @@ func get_nearest_object(object_type = null):
 				nearest_object = o
 	return { object=nearest_object, distance=nearest_distance }
 
-func find_good_tree_location():
-	var box = get_node("../Box")
-	for i in range(5, 100, 5):
-		for j in range(10):
-			var p = Vector3(rand_range(-i, i), 0.0, rand_range(-i, i))
-			var ok = true
-			for c in get_parent().get_children():
-				if (c == box or c.has_method("get_object_type") and c.get_object_type().left(4) == "tree") and (c.translation - p).length() < 5.0:
-					ok = false
-			if ok:
-				return p
-	return null
+func count_visible_objects(object_type):
+	var count = 0
+	for o in $Detect.get_overlapping_bodies():
+		if o.is_inside_tree():
+			var distance = (global_transform.origin - o.global_transform.origin).length()
+			if o != self and o.get_script() != null and o.get_object_type() == object_type:
+				count += 1
+	return count
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed():
@@ -109,9 +106,9 @@ func _input(event):
 			if obj.distance < 1.0 and obj.object.has_method("action"):
 				obj.object.action(self)
 			else:
-				plant_fruit()
-		elif event.get_scancode() == KEY_S:
-			scripted_behaviour()
+				grow_tree()
+		elif event.get_scancode() == KEY_E:
+			eat_fruit()
 		elif event.get_scancode() == KEY_G:
 			goap()
 
@@ -151,6 +148,43 @@ func store_held(object_type):
 	else:
 		return false
 
+# Actions for GOAP
+
+func pickup_nearest_object(object_type):
+	if holds(object_type):
+		return false
+	var object = get_nearest_object(object_type).object
+	if object == null:
+		return false
+	run_to(object.translation)
+	if !yield(self, "run_end"):
+		emit_signal("action_end", false)
+	emit_signal("action_end", pickup_object(object_type))
+
+func pickup_axe():
+	return pickup_nearest_object("axe")
+	
+func pickup_fruit():
+	return pickup_nearest_object("fruit")
+	
+func pickup_wood():
+	return pickup_nearest_object("wood")
+
+func use_nearest_object(object_type):
+	var object = get_nearest_object(object_type).object
+	if object == null:
+		return false
+	run_to(object.translation)
+	if !yield(self, "run_end"):
+		emit_signal("action_end", false)
+	emit_signal("action_end", object.action(self))
+
+func cut_tree():
+	return use_nearest_object("tree")
+	
+func store_wood():
+	return use_nearest_object("box")
+
 func eat_fruit():
 	if held != null and held.get_object_type() == "fruit":
 		held.free()
@@ -160,138 +194,96 @@ func eat_fruit():
 		if life > 100: life = 100
 		return true
 	return false
-	
-func plant_fruit():
-	if held != null and held.get_object_type() == "fruit":
-		held.free()
-		held = null
-		update_held_icon()
-		var tree = preload("res://goap_example/tree/tree.tscn").instance()
-		tree.translation = translation + 2.0*Vector3(sin(rotation.y), 0.0, cos(rotation.y))
-		get_parent().add_child(tree)
-		return true
+
+func grow_tree():
+	# Check we have a fruit
+	if held == null or held.get_object_type() != "fruit":
+		return false
+	# Find a nice location for the tree
+	var box = get_node("../Box")
+	var p = null
+	for i in range(5, 100, 5):
+		for j in range(10):
+			var test_p = Vector3(rand_range(-i, i), 0.0, rand_range(-i, i))
+			var ok = true
+			for c in get_parent().get_children():
+				if (c == box or c.has_method("get_object_type") and c.get_object_type().left(4) == "tree") and (c.translation - test_p).length() < 5.0:
+					ok = false
+			if ok:
+				p = test_p
+				break
+		if p != null:
+			break
+	# return false if no location was found
+	if p == null:
+		return false
+	# Try to run to location and return false uon failure
+	run_to(p)
+	if !yield(self, "run_end"):
+		emit_signal("action_end", false)
+	# Destroy fruit and create growing tree
+	held.free()
+	held = null
+	update_held_icon()
+	var tree = preload("res://goap_example/tree/tree.tscn").instance()
+	tree.translation = translation + 2.0*Vector3(sin(rotation.y), 0.0, cos(rotation.y))
+	get_parent().add_child(tree)
+	emit_signal("action_end", true)
+
+func wait():
+	# The wait action triggers an error so the plan is recalculated 
 	return false
 
-func scripted_behaviour():
-	while true:
-		var wood = get_nearest_object("wood").object
-		if wood != null:
-			target = wood.translation
-			yield(self, "action_end")
-			wood = get_nearest_object("wood").object
-			if wood != null:
-				pickup(wood)
-				var box = get_nearest_object("box").object
-				if box != null:
-					target = box.translation
-					yield(self, "action_end")
-					box.action(self)
-		else:
-			if !holds("axe"):
-				var axe = get_nearest_object("axe").object
-				if axe != null:
-					target = axe.translation
-					yield(self, "action_end")
-					axe = get_nearest_object("axe").object
-					if axe != null:
-						pickup(axe)
-			else:
-				print("Cannot see an axe")
-			if holds("axe"):
-				var tree = get_nearest_object("tree").object
-				if tree == null:
-					break
-				target = tree.translation
-				yield(self, "action_end")
-				tree = get_nearest_object("tree").object
-				if tree != null:
-					tree.action(self)
-					$Timer.start()
-					yield($Timer, "timeout")
-			else:
-				$Timer.start()
-				yield($Timer, "timeout")
+# GOAP stuff
+
+func goap_current_state():
+	var state = ""
+	for o in ["axe", "wood", "fruit"]:
+		if !holds(o):
+			state += "!"
+		state += "has_"
+		state += o
+		state += " "
+	for o in ["axe", "wood", "fruit", "tree", "box"]:
+		if get_nearest_object(o).object == null:
+			state += "!"
+		state += "sees_"
+		state += o
+		state += " "
+	state += " hungry" if (life < 75) else " !hungry"
+	return state
+
+func goap_current_goal():
+	var goal
+	if count_visible_objects("tree") < 10:
+		goal = "sees_growing_tree"
+	else:
+		goal = "wood_stored"
+	goal += " !hungry"
+	return goal
 
 func goap():
 	var action_planner = get_node("ActionPlanner")
 	if action_planner == null:
 		return
 	while true:
-		# Calculate current state
-		var state = ""
-		for o in ["axe", "wood", "fruit"]:
-			if !holds(o):
-				state += "!"
-			state += "has_"
-			state += o
-			state += " "
-		for o in ["axe", "wood", "fruit", "tree", "box"]:
-			if get_nearest_object(o).object == null:
-				state += "!"
-			state += "sees_"
-			state += o
-			state += " "
-		# calculate plan
-		var goal = "wood_stored"
-		if life < 75:
-			goal += " !hungry"
-		else:
-			goal += " sees_growing_tree"
-		var plan = action_planner.plan(state, goal)
+		var plan = action_planner.plan(goap_current_state(), goap_current_goal())
 		$UI/ActionQueue.text = PoolStringArray(plan).join(", ")
 		# execute plan
 		for a in plan:
 			var error = false
-			if a == "get_axe":
-				var axe = get_nearest_object("axe").object
-				if holds("axe") or axe == null:
-					error = true
-				else:
-					run_to(axe.translation)
-					yield(self, "action_end")
-					error = !pickup_object("axe")
-			elif a == "get_wood":
-				var wood = get_nearest_object("wood").object
-				if holds("wood") or wood == null:
-					error = true
-				else:
-					run_to(wood.translation)
-					yield(self, "action_end")
-					error = !pickup_object("wood")
-			elif a == "get_fruit":
-				var fruit = get_nearest_object("fruit").object
-				if holds("fruit") or fruit == null:
-					error = true
-				else:
-					run_to(fruit.translation)
-					yield(self, "action_end")
-					error = !pickup_object("fruit")
-			elif a == "cut_tree":
-				var tree = get_nearest_object("tree").object
-				if holds("tree") or tree == null:
-					error = true
-				else:
-					run_to(tree.translation)
-					yield(self, "action_end")
-					tree.action(self)
-			elif a == "store_wood":
-				var box = get_nearest_object("box").object
-				if box != null:
-					run_to(box.translation)
-					yield(self, "action_end")
-					box.action(self)
-			elif a == "plant_fruit":
-				var p = find_good_tree_location()
-				if p != null:
-					run_to(p)
-					yield(self, "action_end")
-					error = !plant_fruit()
-				else:
-					error = true
-			elif a == "eat_fruit":
-				error = !eat_fruit()
-			elif a == "wait":
-				error = true
+			# Actions are implemented as methods
+			# - immediate actions return a boolean status
+			# - non immediate actions (that call yield) send their status using the action_end signal
+			if has_method(a):
+				print("Calling action function "+a)
+				var status = call(a)
+				if typeof(status) == TYPE_OBJECT and status is GDScriptFunctionState:
+					status = yield(self, "action_end")
+				if typeof(status) != TYPE_BOOL:
+					print("Return value of "+a+" is not a boolean")
+					status = false
+				error = !status
 			else:
 				print("Cannot perform action "+a)
 				error = true

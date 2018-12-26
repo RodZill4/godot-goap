@@ -1,8 +1,5 @@
 extends Node
 
-export(String) var state = ""
-export(String) var goal = ""
-
 var state_atoms = []
 var actions = []
 
@@ -88,7 +85,7 @@ func parse_actions():
 		actions.append(action)
 
 func plan(s, g):
-	print("Plan from '"+s+"' to '"+g+"'")
+	#print("Plan from '"+s+"' to '"+g+"'")
 	var state = parse_state(s)
 	var goal = parse_state(g)
 	var nodes = []
@@ -109,7 +106,7 @@ func plan(s, g):
 			for j in actions.size():
 				plan.insert(j, actions[j])
 			i = nodes[i].previous
-	print("Explored "+str(nodes.size())+" states.")
+	#print("Explored "+str(nodes.size())+" states.")
 	return plan
 
 func fix_nodes_cost(nodes, index_list, difference):
