@@ -1,0 +1,194 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://goap_example/wood/wood.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 0.155596, 0.163885, 0.423222 )
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.214844, 0.117834, 0.0302124, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.9
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission", "Metallic", "Roughness" ]
+
+[sub_resource type="SpatialMaterial" id=3]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.8, 0.36772, 0.0925222, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=4]
+
+blend_shape_mode = 1
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+surfaces/0 = {
+"aabb": AABB( -0.216106, -0.413894, -0.229023, 0.398624, 0.876687, 0.416885 ),
+"array_data": PoolByteArray( 196, 36, 38, 158, 239, 176, 0, 60, 0, 251, 130, 0, 176, 49, 102, 182, 6, 174, 0, 60, 86, 181, 202, 0, 43, 36, 66, 182, 235, 177, 0, 60, 4, 183, 153, 0, 181, 48, 190, 162, 38, 176, 0, 60, 88, 255, 166, 0, 213, 49, 125, 182, 254, 40, 0, 60, 93, 174, 21, 0, 215, 49, 141, 31, 200, 43, 0, 60, 123, 2, 30, 0, 76, 45, 159, 182, 183, 49, 0, 60, 37, 169, 83, 0, 237, 45, 51, 161, 194, 49, 0, 60, 56, 4, 113, 0, 55, 172, 6, 182, 2, 50, 0, 60, 215, 188, 98, 0, 144, 172, 159, 162, 173, 49, 0, 60, 203, 3, 115, 0, 89, 177, 93, 182, 60, 45, 0, 60, 165, 175, 34, 0, 30, 45, 103, 55, 218, 48, 0, 60, 41, 86, 82, 0, 133, 177, 49, 163, 202, 42, 0, 60, 133, 253, 28, 0, 107, 176, 80, 182, 17, 175, 0, 60, 177, 179, 195, 0, 73, 176, 55, 161, 207, 174, 0, 60, 162, 250, 172, 0, 43, 36, 66, 182, 235, 177, 0, 60, 0, 130, 253, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 253, 0, 107, 176, 80, 182, 17, 175, 0, 60, 0, 130, 253, 0, 234, 178, 36, 55, 59, 40, 0, 60, 0, 126, 253, 0, 253, 175, 19, 55, 252, 175, 0, 60, 0, 126, 253, 0, 6, 177, 15, 55, 249, 176, 0, 60, 0, 126, 253, 0, 6, 177, 15, 55, 249, 176, 0, 60, 179, 74, 189, 0, 50, 175, 88, 55, 133, 48, 0, 60, 212, 85, 82, 0, 171, 165, 235, 54, 84, 179, 0, 60, 4, 67, 149, 0, 132, 49, 23, 55, 115, 40, 0, 60, 98, 79, 14, 0, 234, 178, 36, 55, 59, 40, 0, 60, 154, 72, 18, 0, 82, 48, 215, 54, 46, 176, 0, 60, 81, 73, 192, 0, 30, 45, 103, 55, 218, 48, 0, 60, 255, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 255, 126, 244, 0, 50, 175, 88, 55, 133, 48, 0, 60, 255, 126, 244, 0, 82, 48, 215, 54, 46, 176, 0, 60, 4, 126, 244, 0, 31, 48, 24, 55, 142, 37, 0, 60, 4, 126, 244, 0, 132, 49, 23, 55, 115, 40, 0, 60, 4, 126, 244, 0, 6, 177, 15, 55, 249, 176, 0, 60, 4, 126, 249, 0, 96, 165, 246, 54, 206, 177, 0, 60, 4, 126, 249, 0, 171, 165, 235, 54, 84, 179, 0, 60, 4, 126, 249, 0, 50, 175, 88, 55, 133, 48, 0, 60, 254, 126, 244, 0, 115, 177, 35, 55, 57, 37, 0, 60, 254, 126, 244, 0, 234, 178, 36, 55, 59, 40, 0, 60, 254, 126, 244, 0, 132, 49, 23, 55, 115, 40, 0, 60, 5, 125, 240, 0, 97, 43, 86, 55, 39, 47, 0, 60, 5, 125, 240, 0, 30, 45, 103, 55, 218, 48, 0, 60, 5, 125, 240, 0, 171, 165, 235, 54, 84, 179, 0, 60, 8, 126, 249, 0, 104, 46, 231, 54, 195, 174, 0, 60, 8, 126, 249, 0, 82, 48, 215, 54, 46, 176, 0, 60, 8, 126, 249, 0, 213, 49, 125, 182, 254, 40, 0, 60, 251, 130, 251, 0, 94, 48, 99, 182, 76, 172, 0, 60, 251, 130, 251, 0, 176, 49, 102, 182, 6, 174, 0, 60, 251, 130, 251, 0, 89, 177, 93, 182, 60, 45, 0, 60, 7, 131, 18, 0, 237, 169, 27, 182, 159, 48, 0, 60, 7, 131, 18, 0, 55, 172, 6, 182, 2, 50, 0, 60, 7, 131, 18, 0, 176, 49, 102, 182, 6, 174, 0, 60, 252, 130, 253, 0, 219, 35, 72, 182, 84, 176, 0, 60, 252, 130, 253, 0, 43, 36, 66, 182, 235, 177, 0, 60, 252, 130, 253, 0, 76, 45, 159, 182, 183, 49, 0, 60, 252, 130, 246, 0, 122, 48, 117, 182, 49, 40, 0, 60, 252, 130, 246, 0, 213, 49, 125, 182, 254, 40, 0, 60, 252, 130, 246, 0, 107, 176, 80, 182, 17, 175, 0, 60, 0, 130, 254, 0, 212, 175, 93, 182, 39, 44, 0, 60, 0, 130, 254, 0, 89, 177, 93, 182, 60, 45, 0, 60, 0, 130, 254, 0, 55, 172, 6, 182, 2, 50, 0, 60, 226, 133, 0, 0, 44, 44, 142, 182, 102, 48, 0, 60, 226, 133, 0, 0, 76, 45, 159, 182, 183, 49, 0, 60, 226, 133, 0, 0, 43, 36, 66, 182, 235, 177, 0, 60, 0, 130, 253, 0, 219, 35, 72, 182, 84, 176, 0, 60, 0, 130, 253, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 253, 0, 234, 178, 36, 55, 59, 40, 0, 60, 0, 126, 253, 0, 115, 177, 35, 55, 57, 37, 0, 60, 0, 126, 253, 0, 253, 175, 19, 55, 252, 175, 0, 60, 0, 126, 253, 0, 30, 45, 103, 55, 218, 48, 0, 60, 255, 126, 244, 0, 97, 43, 86, 55, 39, 47, 0, 60, 255, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 255, 126, 244, 0, 82, 48, 215, 54, 46, 176, 0, 60, 4, 126, 244, 0, 104, 46, 231, 54, 195, 174, 0, 60, 4, 126, 244, 0, 31, 48, 24, 55, 142, 37, 0, 60, 4, 126, 244, 0, 6, 177, 15, 55, 249, 176, 0, 60, 4, 126, 249, 0, 253, 175, 19, 55, 252, 175, 0, 60, 4, 126, 249, 0, 96, 165, 246, 54, 206, 177, 0, 60, 4, 126, 249, 0, 50, 175, 88, 55, 133, 48, 0, 60, 254, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 254, 126, 244, 0, 115, 177, 35, 55, 57, 37, 0, 60, 254, 126, 244, 0, 132, 49, 23, 55, 115, 40, 0, 60, 5, 125, 240, 0, 31, 48, 24, 55, 142, 37, 0, 60, 5, 125, 240, 0, 97, 43, 86, 55, 39, 47, 0, 60, 5, 125, 240, 0, 171, 165, 235, 54, 84, 179, 0, 60, 8, 126, 249, 0, 96, 165, 246, 54, 206, 177, 0, 60, 8, 126, 249, 0, 104, 46, 231, 54, 195, 174, 0, 60, 8, 126, 249, 0, 213, 49, 125, 182, 254, 40, 0, 60, 251, 130, 251, 0, 122, 48, 117, 182, 49, 40, 0, 60, 251, 130, 251, 0, 94, 48, 99, 182, 76, 172, 0, 60, 251, 130, 251, 0, 89, 177, 93, 182, 60, 45, 0, 60, 7, 131, 18, 0, 212, 175, 93, 182, 39, 44, 0, 60, 7, 131, 18, 0, 237, 169, 27, 182, 159, 48, 0, 60, 7, 131, 18, 0, 176, 49, 102, 182, 6, 174, 0, 60, 252, 130, 253, 0, 94, 48, 99, 182, 76, 172, 0, 60, 252, 130, 253, 0, 219, 35, 72, 182, 84, 176, 0, 60, 252, 130, 253, 0, 76, 45, 159, 182, 183, 49, 0, 60, 252, 130, 246, 0, 44, 44, 142, 182, 102, 48, 0, 60, 252, 130, 246, 0, 122, 48, 117, 182, 49, 40, 0, 60, 252, 130, 246, 0, 107, 176, 80, 182, 17, 175, 0, 60, 0, 130, 254, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 254, 0, 212, 175, 93, 182, 39, 44, 0, 60, 0, 130, 254, 0, 55, 172, 6, 182, 2, 50, 0, 60, 226, 133, 0, 0, 237, 169, 27, 182, 159, 48, 0, 60, 226, 133, 0, 0, 44, 44, 142, 182, 102, 48, 0, 60, 226, 133, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 1, 0, 4, 0, 5, 0, 4, 0, 6, 0, 7, 0, 6, 0, 8, 0, 9, 0, 8, 0, 10, 0, 5, 0, 7, 0, 11, 0, 12, 0, 10, 0, 13, 0, 14, 0, 13, 0, 2, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 12, 0, 14, 0, 21, 0, 7, 0, 9, 0, 22, 0, 14, 0, 0, 0, 23, 0, 3, 0, 5, 0, 24, 0, 9, 0, 12, 0, 25, 0, 0, 0, 3, 0, 26, 0, 27, 0, 29, 0, 28, 0, 30, 0, 32, 0, 31, 0, 33, 0, 35, 0, 34, 0, 36, 0, 38, 0, 37, 0, 39, 0, 41, 0, 40, 0, 42, 0, 44, 0, 43, 0, 45, 0, 47, 0, 46, 0, 48, 0, 50, 0, 49, 0, 51, 0, 53, 0, 52, 0, 54, 0, 56, 0, 55, 0, 57, 0, 59, 0, 58, 0, 60, 0, 62, 0, 61, 0, 0, 0, 1, 0, 3, 0, 3, 0, 4, 0, 5, 0, 5, 0, 6, 0, 7, 0, 7, 0, 8, 0, 9, 0, 9, 0, 10, 0, 12, 0, 5, 0, 11, 0, 24, 0, 12, 0, 13, 0, 14, 0, 14, 0, 2, 0, 0, 0, 63, 0, 65, 0, 64, 0, 66, 0, 68, 0, 67, 0, 12, 0, 21, 0, 25, 0, 7, 0, 22, 0, 11, 0, 14, 0, 23, 0, 21, 0, 3, 0, 24, 0, 26, 0, 9, 0, 25, 0, 22, 0, 0, 0, 26, 0, 23, 0, 69, 0, 71, 0, 70, 0, 72, 0, 74, 0, 73, 0, 75, 0, 77, 0, 76, 0, 78, 0, 80, 0, 79, 0, 81, 0, 83, 0, 82, 0, 84, 0, 86, 0, 85, 0, 87, 0, 89, 0, 88, 0, 90, 0, 92, 0, 91, 0, 93, 0, 95, 0, 94, 0, 96, 0, 98, 0, 97, 0, 99, 0, 101, 0, 100, 0, 102, 0, 104, 0, 103, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 168,
+"material": SubResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 105
+}
+surfaces/1 = {
+"aabb": AABB( -0.170399, -0.40971, -0.181468, 0.310311, 0.868352, 0.325908 ),
+"array_data": PoolByteArray( 253, 175, 19, 55, 252, 175, 0, 60, 6, 126, 248, 0, 203, 173, 75, 55, 164, 46, 0, 60, 6, 126, 248, 0, 104, 46, 231, 54, 195, 174, 0, 60, 6, 126, 248, 0, 212, 175, 93, 182, 39, 44, 0, 60, 0, 130, 7, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 253, 0, 122, 48, 117, 182, 49, 40, 0, 60, 252, 130, 249, 0, 31, 48, 24, 55, 142, 37, 0, 60, 2, 126, 244, 0, 104, 46, 231, 54, 195, 174, 0, 60, 2, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 2, 126, 244, 0, 104, 46, 231, 54, 195, 174, 0, 60, 6, 126, 253, 0, 96, 165, 246, 54, 206, 177, 0, 60, 6, 126, 253, 0, 253, 175, 19, 55, 252, 175, 0, 60, 6, 126, 253, 0, 31, 48, 24, 55, 142, 37, 0, 60, 255, 125, 235, 0, 203, 173, 75, 55, 164, 46, 0, 60, 255, 125, 235, 0, 97, 43, 86, 55, 39, 47, 0, 60, 255, 125, 235, 0, 253, 175, 19, 55, 252, 175, 0, 60, 247, 126, 250, 0, 115, 177, 35, 55, 57, 37, 0, 60, 247, 126, 250, 0, 203, 173, 75, 55, 164, 46, 0, 60, 247, 126, 250, 0, 219, 35, 72, 182, 84, 176, 0, 60, 255, 130, 252, 0, 94, 48, 99, 182, 76, 172, 0, 60, 252, 130, 252, 0, 44, 44, 142, 182, 102, 48, 0, 60, 242, 130, 254, 0, 237, 169, 27, 182, 159, 48, 0, 60, 239, 133, 23, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 4, 0, 5, 0, 18, 0, 18, 0, 5, 0, 19, 0, 5, 0, 3, 0, 20, 0, 20, 0, 3, 0, 21, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 30,
+"material": SubResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 22
+}
+
+[node name="Wood" type="RigidBody"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.056834, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="0"]
+
+transform = Transform( 0.999505, 1.37494e-009, 0.0314548, 0.0314548, -4.36898e-008, -0.999505, 0, 1, -4.37114e-008, -0.0106374, 0.0203607, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="1"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+
+

@@ -1,0 +1,334 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://goap_example/tree/tree.gd" type="Script" id=1]
+[ext_resource path="res://goap_example/tree/tree.tres" type="ArrayMesh" id=2]
+
+
+
+[sub_resource type="CapsuleShape" id=1]
+
+radius = 0.243596
+height = 1.09742
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.636719, 0.472973, 0.241257, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.93
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Roughness" ]
+
+[sub_resource type="ArrayMesh" id=3]
+
+blend_shape_mode = 1
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+surfaces/0 = {
+"aabb": AABB( -0.567967, -0.0284753, -0.601758, 1.13874, 0.283263, 1.19734 ),
+"array_data": PoolByteArray( 13, 49, 50, 45, 87, 55, 0, 60, 33, 102, 67, 0, 119, 53, 104, 42, 19, 52, 0, 60, 55, 109, 31, 0, 117, 45, 168, 49, 94, 52, 0, 60, 25, 117, 39, 0, 24, 182, 186, 46, 191, 53, 0, 60, 192, 90, 61, 0, 141, 176, 200, 46, 29, 55, 0, 60, 241, 101, 74, 0, 60, 179, 84, 50, 243, 49, 0, 60, 232, 122, 23, 0, 201, 181, 201, 44, 45, 180, 0, 60, 198, 102, 210, 0, 18, 183, 142, 48, 88, 38, 0, 60, 188, 106, 252, 0, 163, 179, 124, 49, 210, 177, 0, 60, 227, 117, 220, 0, 218, 47, 59, 44, 4, 184, 0, 60, 22, 103, 186, 0, 153, 176, 83, 45, 76, 183, 0, 60, 235, 107, 192, 0, 81, 45, 96, 48, 150, 179, 0, 60, 17, 120, 220, 0, 64, 55, 204, 41, 206, 165, 0, 60, 65, 108, 5, 0, 32, 54, 26, 45, 194, 178, 0, 60, 51, 112, 227, 0, 95, 52, 87, 49, 194, 33, 0, 60, 50, 116, 1, 0, 211, 168, 19, 52, 139, 37, 0, 60, 1, 126, 250, 0, 144, 56, 74, 167, 4, 178, 0, 60, 65, 107, 238, 0, 167, 53, 74, 167, 204, 183, 0, 60, 49, 101, 198, 0, 188, 21, 74, 167, 208, 184, 0, 60, 253, 87, 165, 0, 155, 181, 74, 167, 204, 183, 0, 60, 207, 99, 195, 0, 139, 184, 74, 167, 4, 178, 0, 60, 178, 94, 224, 0, 139, 184, 74, 167, 210, 49, 0, 60, 159, 77, 26, 0, 155, 181, 74, 167, 179, 55, 0, 60, 201, 69, 91, 0, 188, 21, 74, 167, 195, 56, 0, 60, 0, 87, 91, 0, 167, 53, 74, 167, 179, 55, 0, 60, 50, 104, 51, 0, 144, 56, 74, 167, 210, 49, 0, 60, 52, 114, 18, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 14, 0, 15, 0, 11, 0, 14, 0, 11, 0, 13, 0, 13, 0, 11, 0, 9, 0, 11, 0, 15, 0, 8, 0, 11, 0, 8, 0, 10, 0, 10, 0, 8, 0, 6, 0, 8, 0, 15, 0, 5, 0, 8, 0, 5, 0, 7, 0, 7, 0, 5, 0, 3, 0, 5, 0, 15, 0, 2, 0, 5, 0, 2, 0, 4, 0, 4, 0, 2, 0, 0, 0, 2, 0, 15, 0, 14, 0, 2, 0, 14, 0, 1, 0, 1, 0, 14, 0, 12, 0, 16, 0, 12, 0, 13, 0, 16, 0, 13, 0, 17, 0, 17, 0, 13, 0, 9, 0, 18, 0, 9, 0, 10, 0, 18, 0, 10, 0, 19, 0, 19, 0, 10, 0, 6, 0, 20, 0, 6, 0, 7, 0, 20, 0, 7, 0, 21, 0, 21, 0, 7, 0, 3, 0, 22, 0, 3, 0, 4, 0, 22, 0, 4, 0, 23, 0, 23, 0, 4, 0, 0, 0, 24, 0, 0, 0, 1, 0, 24, 0, 1, 0, 25, 0, 25, 0, 1, 0, 12, 0, 17, 0, 9, 0, 18, 0, 19, 0, 6, 0, 20, 0, 21, 0, 3, 0, 22, 0, 23, 0, 0, 0, 24, 0, 25, 0, 12, 0, 16, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 120,
+"material": SubResource( 2 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 26
+}
+_sections_unfolded = [ "surface_1" ]
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "Cut"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tree:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.380978, 0 ), Vector3( 0, 0.380978, 0 ), Vector3( 0, -0.838493, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tree:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -77.7113 ), Vector3( 0, 0, -77.7113 ), Vector3( 0, 0, -111.273 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "drop_items"
+}, {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:can_cut")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "Grow"
+length = 20.0
+loop = false
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tree:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Tree:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ground:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 19, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:can_cut")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "Grown"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tree:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Tree:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:can_cut")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Tree" type="StaticBody"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.056834, 0 )
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 3
+collision_mask = 3
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+can_cut = false
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.600526, 0 )
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tree" type="MeshInstance" parent="." index="1"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Ground" type="MeshInstance" parent="." index="2"]
+
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 3 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = "Grow"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Cut = SubResource( 4 )
+anims/Grow = SubResource( 5 )
+anims/Grown = SubResource( 6 )
+blend_times = [  ]
+
+

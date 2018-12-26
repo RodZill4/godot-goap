@@ -1,0 +1,18 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+_global_script_classes=null
+_global_script_class_icons=null
+
+[application]
+
+config/name="goap"
+run/main_scene="res://goap_example/test.tscn"
+config/icon="res://icon.png"

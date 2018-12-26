@@ -1,0 +1,433 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://goap_example/box/box_wood.gd" type="Script" id=1]
+
+
+
+[sub_resource type="SpatialMaterial" id=1]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0, 0.00198925, 0.8, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=2]
+
+blend_shape_mode = 1
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+surfaces/0 = {
+"aabb": AABB( -0.47588, -0.00950259, -0.47588, 0.95176, 0.567944, 0.95177 ),
+"array_data": PoolByteArray( 157, 183, 119, 56, 157, 55, 0, 60, 129, 0, 0, 0, 157, 183, 221, 160, 157, 183, 0, 60, 129, 0, 0, 0, 157, 183, 221, 160, 157, 55, 0, 60, 129, 0, 0, 0, 157, 183, 119, 56, 157, 183, 0, 60, 0, 0, 129, 0, 157, 55, 221, 160, 157, 183, 0, 60, 0, 0, 129, 0, 157, 183, 221, 160, 157, 183, 0, 60, 0, 0, 129, 0, 157, 55, 119, 56, 157, 183, 0, 60, 127, 0, 0, 0, 157, 55, 221, 160, 157, 55, 0, 60, 127, 0, 0, 0, 157, 55, 221, 160, 157, 183, 0, 60, 127, 0, 0, 0, 157, 55, 119, 56, 157, 55, 0, 60, 0, 0, 127, 0, 157, 183, 221, 160, 157, 55, 0, 60, 0, 0, 127, 0, 157, 55, 221, 160, 157, 55, 0, 60, 0, 0, 127, 0, 157, 55, 221, 160, 157, 183, 0, 60, 0, 129, 0, 0, 157, 183, 221, 160, 157, 55, 0, 60, 0, 129, 0, 0, 157, 183, 221, 160, 157, 183, 0, 60, 0, 129, 0, 0, 157, 183, 119, 56, 157, 55, 0, 60, 0, 127, 0, 0, 185, 182, 119, 56, 185, 182, 0, 60, 0, 127, 0, 0, 157, 183, 119, 56, 157, 183, 0, 60, 0, 127, 0, 0, 185, 54, 119, 56, 185, 54, 0, 60, 0, 0, 129, 0, 185, 182, 45, 45, 185, 54, 0, 60, 0, 0, 129, 0, 185, 182, 119, 56, 185, 54, 0, 60, 0, 0, 129, 0, 157, 55, 119, 56, 157, 55, 0, 60, 0, 127, 0, 0, 185, 182, 119, 56, 185, 54, 0, 60, 0, 127, 0, 0, 157, 183, 119, 56, 157, 55, 0, 60, 0, 127, 0, 0, 157, 183, 119, 56, 157, 183, 0, 60, 0, 127, 0, 0, 185, 54, 119, 56, 185, 182, 0, 60, 0, 127, 0, 0, 157, 55, 119, 56, 157, 183, 0, 60, 0, 127, 0, 0, 157, 55, 119, 56, 157, 183, 0, 60, 0, 127, 0, 0, 185, 54, 119, 56, 185, 54, 0, 60, 0, 127, 0, 0, 157, 55, 119, 56, 157, 55, 0, 60, 0, 127, 0, 0, 185, 182, 45, 45, 185, 182, 0, 60, 0, 127, 0, 0, 185, 54, 45, 45, 185, 54, 0, 60, 0, 127, 0, 0, 185, 54, 45, 45, 185, 182, 0, 60, 0, 127, 0, 0, 185, 182, 119, 56, 185, 182, 0, 60, 0, 0, 127, 0, 185, 54, 45, 45, 185, 182, 0, 60, 0, 0, 127, 0, 185, 54, 119, 56, 185, 182, 0, 60, 0, 0, 127, 0, 185, 54, 119, 56, 185, 182, 0, 60, 129, 0, 0, 0, 185, 54, 45, 45, 185, 54, 0, 60, 129, 0, 0, 0, 185, 54, 119, 56, 185, 54, 0, 60, 129, 0, 0, 0, 185, 182, 119, 56, 185, 54, 0, 60, 127, 0, 0, 0, 185, 182, 45, 45, 185, 182, 0, 60, 127, 0, 0, 0, 185, 182, 119, 56, 185, 182, 0, 60, 127, 0, 0, 0, 157, 183, 119, 56, 157, 183, 0, 60, 129, 0, 0, 0, 157, 55, 119, 56, 157, 183, 0, 60, 0, 0, 129, 0, 157, 55, 119, 56, 157, 55, 0, 60, 127, 0, 0, 0, 157, 183, 119, 56, 157, 55, 0, 60, 0, 0, 127, 0, 157, 55, 221, 160, 157, 55, 0, 60, 0, 129, 0, 0, 157, 183, 119, 56, 157, 55, 0, 60, 0, 127, 0, 0, 185, 182, 119, 56, 185, 54, 0, 60, 0, 127, 0, 0, 185, 182, 119, 56, 185, 182, 0, 60, 0, 127, 0, 0, 185, 54, 45, 45, 185, 54, 0, 60, 0, 0, 129, 0, 185, 54, 119, 56, 185, 54, 0, 60, 0, 127, 0, 0, 185, 182, 119, 56, 185, 182, 0, 60, 0, 127, 0, 0, 157, 55, 119, 56, 157, 183, 0, 60, 0, 127, 0, 0, 185, 54, 119, 56, 185, 182, 0, 60, 0, 127, 0, 0, 185, 54, 119, 56, 185, 54, 0, 60, 0, 127, 0, 0, 185, 182, 45, 45, 185, 54, 0, 60, 0, 127, 0, 0, 185, 182, 45, 45, 185, 182, 0, 60, 0, 0, 127, 0, 185, 54, 45, 45, 185, 182, 0, 60, 129, 0, 0, 0, 185, 182, 45, 45, 185, 54, 0, 60, 127, 0, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 21, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 27, 0, 29, 0, 28, 0, 30, 0, 32, 0, 31, 0, 33, 0, 35, 0, 34, 0, 36, 0, 38, 0, 37, 0, 39, 0, 41, 0, 40, 0, 0, 0, 1, 0, 42, 0, 3, 0, 4, 0, 43, 0, 6, 0, 7, 0, 44, 0, 9, 0, 10, 0, 45, 0, 12, 0, 13, 0, 46, 0, 47, 0, 49, 0, 48, 0, 18, 0, 19, 0, 50, 0, 21, 0, 22, 0, 51, 0, 24, 0, 25, 0, 52, 0, 53, 0, 55, 0, 54, 0, 30, 0, 31, 0, 56, 0, 33, 0, 34, 0, 57, 0, 36, 0, 37, 0, 58, 0, 39, 0, 40, 0, 59, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 84,
+"material": SubResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 60
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "Idle"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Arrow:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 2.2288, 0 ), Vector3( 0, 2.63555, 0 ), Vector3( 0, 2.2288, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Arrow/Arrow:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=4]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0, 0.00198925, 0.8, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 0.15625, 0.189209, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Emission", "Flags", "Parameters" ]
+
+[sub_resource type="ArrayMesh" id=5]
+
+blend_shape_mode = 1
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+surfaces/0 = {
+"aabb": AABB( -0.201294, -0.908971, -0.200436, 0.40173, 0.769172, 0.40173 ),
+"array_data": PoolByteArray( 104, 176, 121, 176, 104, 48, 0, 60, 131, 238, 0, 0, 58, 172, 235, 184, 44, 172, 0, 60, 131, 238, 0, 0, 58, 172, 235, 184, 58, 44, 0, 60, 131, 238, 0, 0, 104, 176, 121, 176, 97, 176, 0, 60, 0, 238, 131, 0, 44, 44, 235, 184, 44, 172, 0, 60, 0, 238, 131, 0, 58, 172, 235, 184, 44, 172, 0, 60, 0, 238, 131, 0, 97, 48, 121, 176, 97, 176, 0, 60, 125, 238, 0, 0, 44, 44, 235, 184, 58, 44, 0, 60, 125, 238, 0, 0, 44, 44, 235, 184, 44, 172, 0, 60, 125, 238, 0, 0, 97, 48, 121, 176, 104, 48, 0, 60, 0, 238, 125, 0, 58, 172, 235, 184, 58, 44, 0, 60, 0, 238, 125, 0, 44, 44, 235, 184, 58, 44, 0, 60, 0, 238, 125, 0, 44, 44, 235, 184, 44, 172, 0, 60, 0, 126, 254, 0, 113, 178, 240, 184, 105, 178, 0, 60, 0, 126, 254, 0, 58, 172, 235, 184, 44, 172, 0, 60, 0, 126, 254, 0, 104, 176, 121, 176, 97, 176, 0, 60, 0, 127, 0, 0, 97, 48, 121, 176, 104, 48, 0, 60, 0, 127, 0, 0, 97, 48, 121, 176, 97, 176, 0, 60, 0, 127, 0, 0, 105, 50, 240, 184, 113, 50, 0, 60, 0, 185, 105, 0, 113, 178, 240, 184, 113, 50, 0, 60, 0, 185, 105, 0, 223, 156, 69, 187, 223, 28, 0, 60, 0, 185, 105, 0, 58, 172, 235, 184, 44, 172, 0, 60, 254, 126, 0, 0, 113, 178, 240, 184, 113, 50, 0, 60, 254, 126, 0, 0, 58, 172, 235, 184, 58, 44, 0, 60, 254, 126, 0, 0, 44, 44, 235, 184, 58, 44, 0, 60, 2, 126, 0, 0, 105, 50, 240, 184, 105, 178, 0, 60, 2, 126, 0, 0, 44, 44, 235, 184, 44, 172, 0, 60, 2, 126, 0, 0, 58, 172, 235, 184, 58, 44, 0, 60, 0, 126, 2, 0, 105, 50, 240, 184, 113, 50, 0, 60, 0, 126, 2, 0, 44, 44, 235, 184, 58, 44, 0, 60, 0, 126, 2, 0, 113, 178, 240, 184, 105, 178, 0, 60, 0, 183, 153, 0, 105, 50, 240, 184, 105, 178, 0, 60, 0, 183, 153, 0, 223, 156, 69, 187, 223, 28, 0, 60, 0, 183, 153, 0, 105, 50, 240, 184, 105, 178, 0, 60, 103, 183, 0, 0, 105, 50, 240, 184, 113, 50, 0, 60, 103, 183, 0, 0, 223, 156, 69, 187, 223, 28, 0, 60, 103, 183, 0, 0, 113, 178, 240, 184, 113, 50, 0, 60, 151, 185, 0, 0, 113, 178, 240, 184, 105, 178, 0, 60, 151, 185, 0, 0, 223, 156, 69, 187, 223, 28, 0, 60, 151, 185, 0, 0, 104, 176, 121, 176, 104, 48, 0, 60, 131, 238, 0, 0, 104, 176, 121, 176, 97, 176, 0, 60, 131, 238, 0, 0, 58, 172, 235, 184, 44, 172, 0, 60, 131, 238, 0, 0, 104, 176, 121, 176, 97, 176, 0, 60, 0, 238, 131, 0, 97, 48, 121, 176, 97, 176, 0, 60, 0, 238, 131, 0, 44, 44, 235, 184, 44, 172, 0, 60, 0, 238, 131, 0, 97, 48, 121, 176, 97, 176, 0, 60, 125, 238, 0, 0, 97, 48, 121, 176, 104, 48, 0, 60, 125, 238, 0, 0, 44, 44, 235, 184, 58, 44, 0, 60, 125, 238, 0, 0, 97, 48, 121, 176, 104, 48, 0, 60, 0, 238, 125, 0, 104, 176, 121, 176, 104, 48, 0, 60, 0, 238, 125, 0, 58, 172, 235, 184, 58, 44, 0, 60, 0, 238, 125, 0, 44, 44, 235, 184, 44, 172, 0, 60, 0, 126, 254, 0, 105, 50, 240, 184, 105, 178, 0, 60, 0, 126, 254, 0, 113, 178, 240, 184, 105, 178, 0, 60, 0, 126, 254, 0, 104, 176, 121, 176, 104, 48, 0, 60, 0, 127, 0, 0, 58, 172, 235, 184, 44, 172, 0, 60, 254, 126, 0, 0, 113, 178, 240, 184, 105, 178, 0, 60, 254, 126, 0, 0, 113, 178, 240, 184, 113, 50, 0, 60, 254, 126, 0, 0, 44, 44, 235, 184, 58, 44, 0, 60, 2, 126, 0, 0, 105, 50, 240, 184, 113, 50, 0, 60, 2, 126, 0, 0, 105, 50, 240, 184, 105, 178, 0, 60, 2, 126, 0, 0, 58, 172, 235, 184, 58, 44, 0, 60, 0, 126, 2, 0, 113, 178, 240, 184, 113, 50, 0, 60, 0, 126, 2, 0, 105, 50, 240, 184, 113, 50, 0, 60, 0, 126, 2, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 21, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 27, 0, 29, 0, 28, 0, 30, 0, 32, 0, 31, 0, 33, 0, 35, 0, 34, 0, 36, 0, 38, 0, 37, 0, 39, 0, 41, 0, 40, 0, 42, 0, 44, 0, 43, 0, 45, 0, 47, 0, 46, 0, 48, 0, 50, 0, 49, 0, 51, 0, 53, 0, 52, 0, 15, 0, 16, 0, 54, 0, 55, 0, 57, 0, 56, 0, 58, 0, 60, 0, 59, 0, 61, 0, 63, 0, 62, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 66,
+"material": SubResource( 4 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 64
+}
+_sections_unfolded = [ "surface_1" ]
+
+[sub_resource type="SpatialMaterial" id=6]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.214844, 0.117834, 0.0302124, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.9
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Emission", "Metallic", "Roughness" ]
+
+[sub_resource type="SpatialMaterial" id=7]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 0.8, 0.36772, 0.0925222, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[sub_resource type="ArrayMesh" id=8]
+
+blend_shape_mode = 1
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+surfaces/0 = {
+"aabb": AABB( -0.216106, -0.413894, -0.229023, 0.398624, 0.876687, 0.416885 ),
+"array_data": PoolByteArray( 196, 36, 38, 158, 239, 176, 0, 60, 0, 251, 130, 0, 176, 49, 102, 182, 6, 174, 0, 60, 86, 181, 202, 0, 43, 36, 66, 182, 235, 177, 0, 60, 4, 183, 153, 0, 181, 48, 190, 162, 38, 176, 0, 60, 88, 255, 166, 0, 213, 49, 125, 182, 254, 40, 0, 60, 93, 174, 21, 0, 215, 49, 141, 31, 200, 43, 0, 60, 123, 2, 30, 0, 76, 45, 159, 182, 183, 49, 0, 60, 37, 169, 83, 0, 237, 45, 51, 161, 194, 49, 0, 60, 56, 4, 113, 0, 55, 172, 6, 182, 2, 50, 0, 60, 215, 188, 98, 0, 144, 172, 159, 162, 173, 49, 0, 60, 203, 3, 115, 0, 89, 177, 93, 182, 60, 45, 0, 60, 165, 175, 34, 0, 30, 45, 103, 55, 218, 48, 0, 60, 41, 86, 82, 0, 133, 177, 49, 163, 202, 42, 0, 60, 133, 253, 28, 0, 107, 176, 80, 182, 17, 175, 0, 60, 177, 179, 195, 0, 73, 176, 55, 161, 207, 174, 0, 60, 162, 250, 172, 0, 43, 36, 66, 182, 235, 177, 0, 60, 0, 130, 253, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 253, 0, 107, 176, 80, 182, 17, 175, 0, 60, 0, 130, 253, 0, 234, 178, 36, 55, 59, 40, 0, 60, 0, 126, 253, 0, 253, 175, 19, 55, 252, 175, 0, 60, 0, 126, 253, 0, 6, 177, 15, 55, 249, 176, 0, 60, 0, 126, 253, 0, 6, 177, 15, 55, 249, 176, 0, 60, 179, 74, 189, 0, 50, 175, 88, 55, 133, 48, 0, 60, 212, 85, 82, 0, 171, 165, 235, 54, 84, 179, 0, 60, 4, 67, 149, 0, 132, 49, 23, 55, 115, 40, 0, 60, 98, 79, 14, 0, 234, 178, 36, 55, 59, 40, 0, 60, 154, 72, 18, 0, 82, 48, 215, 54, 46, 176, 0, 60, 81, 73, 192, 0, 30, 45, 103, 55, 218, 48, 0, 60, 255, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 255, 126, 244, 0, 50, 175, 88, 55, 133, 48, 0, 60, 255, 126, 244, 0, 82, 48, 215, 54, 46, 176, 0, 60, 4, 126, 244, 0, 31, 48, 24, 55, 142, 37, 0, 60, 4, 126, 244, 0, 132, 49, 23, 55, 115, 40, 0, 60, 4, 126, 244, 0, 6, 177, 15, 55, 249, 176, 0, 60, 4, 126, 249, 0, 96, 165, 246, 54, 206, 177, 0, 60, 4, 126, 249, 0, 171, 165, 235, 54, 84, 179, 0, 60, 4, 126, 249, 0, 50, 175, 88, 55, 133, 48, 0, 60, 254, 126, 244, 0, 115, 177, 35, 55, 57, 37, 0, 60, 254, 126, 244, 0, 234, 178, 36, 55, 59, 40, 0, 60, 254, 126, 244, 0, 132, 49, 23, 55, 115, 40, 0, 60, 5, 125, 240, 0, 97, 43, 86, 55, 39, 47, 0, 60, 5, 125, 240, 0, 30, 45, 103, 55, 218, 48, 0, 60, 5, 125, 240, 0, 171, 165, 235, 54, 84, 179, 0, 60, 8, 126, 249, 0, 104, 46, 231, 54, 195, 174, 0, 60, 8, 126, 249, 0, 82, 48, 215, 54, 46, 176, 0, 60, 8, 126, 249, 0, 213, 49, 125, 182, 254, 40, 0, 60, 251, 130, 251, 0, 94, 48, 99, 182, 76, 172, 0, 60, 251, 130, 251, 0, 176, 49, 102, 182, 6, 174, 0, 60, 251, 130, 251, 0, 89, 177, 93, 182, 60, 45, 0, 60, 7, 131, 18, 0, 237, 169, 27, 182, 159, 48, 0, 60, 7, 131, 18, 0, 55, 172, 6, 182, 2, 50, 0, 60, 7, 131, 18, 0, 176, 49, 102, 182, 6, 174, 0, 60, 252, 130, 253, 0, 219, 35, 72, 182, 84, 176, 0, 60, 252, 130, 253, 0, 43, 36, 66, 182, 235, 177, 0, 60, 252, 130, 253, 0, 76, 45, 159, 182, 183, 49, 0, 60, 252, 130, 246, 0, 122, 48, 117, 182, 49, 40, 0, 60, 252, 130, 246, 0, 213, 49, 125, 182, 254, 40, 0, 60, 252, 130, 246, 0, 107, 176, 80, 182, 17, 175, 0, 60, 0, 130, 254, 0, 212, 175, 93, 182, 39, 44, 0, 60, 0, 130, 254, 0, 89, 177, 93, 182, 60, 45, 0, 60, 0, 130, 254, 0, 55, 172, 6, 182, 2, 50, 0, 60, 226, 133, 0, 0, 44, 44, 142, 182, 102, 48, 0, 60, 226, 133, 0, 0, 76, 45, 159, 182, 183, 49, 0, 60, 226, 133, 0, 0, 43, 36, 66, 182, 235, 177, 0, 60, 0, 130, 253, 0, 219, 35, 72, 182, 84, 176, 0, 60, 0, 130, 253, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 253, 0, 234, 178, 36, 55, 59, 40, 0, 60, 0, 126, 253, 0, 115, 177, 35, 55, 57, 37, 0, 60, 0, 126, 253, 0, 253, 175, 19, 55, 252, 175, 0, 60, 0, 126, 253, 0, 30, 45, 103, 55, 218, 48, 0, 60, 255, 126, 244, 0, 97, 43, 86, 55, 39, 47, 0, 60, 255, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 255, 126, 244, 0, 82, 48, 215, 54, 46, 176, 0, 60, 4, 126, 244, 0, 104, 46, 231, 54, 195, 174, 0, 60, 4, 126, 244, 0, 31, 48, 24, 55, 142, 37, 0, 60, 4, 126, 244, 0, 6, 177, 15, 55, 249, 176, 0, 60, 4, 126, 249, 0, 253, 175, 19, 55, 252, 175, 0, 60, 4, 126, 249, 0, 96, 165, 246, 54, 206, 177, 0, 60, 4, 126, 249, 0, 50, 175, 88, 55, 133, 48, 0, 60, 254, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 254, 126, 244, 0, 115, 177, 35, 55, 57, 37, 0, 60, 254, 126, 244, 0, 132, 49, 23, 55, 115, 40, 0, 60, 5, 125, 240, 0, 31, 48, 24, 55, 142, 37, 0, 60, 5, 125, 240, 0, 97, 43, 86, 55, 39, 47, 0, 60, 5, 125, 240, 0, 171, 165, 235, 54, 84, 179, 0, 60, 8, 126, 249, 0, 96, 165, 246, 54, 206, 177, 0, 60, 8, 126, 249, 0, 104, 46, 231, 54, 195, 174, 0, 60, 8, 126, 249, 0, 213, 49, 125, 182, 254, 40, 0, 60, 251, 130, 251, 0, 122, 48, 117, 182, 49, 40, 0, 60, 251, 130, 251, 0, 94, 48, 99, 182, 76, 172, 0, 60, 251, 130, 251, 0, 89, 177, 93, 182, 60, 45, 0, 60, 7, 131, 18, 0, 212, 175, 93, 182, 39, 44, 0, 60, 7, 131, 18, 0, 237, 169, 27, 182, 159, 48, 0, 60, 7, 131, 18, 0, 176, 49, 102, 182, 6, 174, 0, 60, 252, 130, 253, 0, 94, 48, 99, 182, 76, 172, 0, 60, 252, 130, 253, 0, 219, 35, 72, 182, 84, 176, 0, 60, 252, 130, 253, 0, 76, 45, 159, 182, 183, 49, 0, 60, 252, 130, 246, 0, 44, 44, 142, 182, 102, 48, 0, 60, 252, 130, 246, 0, 122, 48, 117, 182, 49, 40, 0, 60, 252, 130, 246, 0, 107, 176, 80, 182, 17, 175, 0, 60, 0, 130, 254, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 254, 0, 212, 175, 93, 182, 39, 44, 0, 60, 0, 130, 254, 0, 55, 172, 6, 182, 2, 50, 0, 60, 226, 133, 0, 0, 237, 169, 27, 182, 159, 48, 0, 60, 226, 133, 0, 0, 44, 44, 142, 182, 102, 48, 0, 60, 226, 133, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 1, 0, 4, 0, 5, 0, 4, 0, 6, 0, 7, 0, 6, 0, 8, 0, 9, 0, 8, 0, 10, 0, 5, 0, 7, 0, 11, 0, 12, 0, 10, 0, 13, 0, 14, 0, 13, 0, 2, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 12, 0, 14, 0, 21, 0, 7, 0, 9, 0, 22, 0, 14, 0, 0, 0, 23, 0, 3, 0, 5, 0, 24, 0, 9, 0, 12, 0, 25, 0, 0, 0, 3, 0, 26, 0, 27, 0, 29, 0, 28, 0, 30, 0, 32, 0, 31, 0, 33, 0, 35, 0, 34, 0, 36, 0, 38, 0, 37, 0, 39, 0, 41, 0, 40, 0, 42, 0, 44, 0, 43, 0, 45, 0, 47, 0, 46, 0, 48, 0, 50, 0, 49, 0, 51, 0, 53, 0, 52, 0, 54, 0, 56, 0, 55, 0, 57, 0, 59, 0, 58, 0, 60, 0, 62, 0, 61, 0, 0, 0, 1, 0, 3, 0, 3, 0, 4, 0, 5, 0, 5, 0, 6, 0, 7, 0, 7, 0, 8, 0, 9, 0, 9, 0, 10, 0, 12, 0, 5, 0, 11, 0, 24, 0, 12, 0, 13, 0, 14, 0, 14, 0, 2, 0, 0, 0, 63, 0, 65, 0, 64, 0, 66, 0, 68, 0, 67, 0, 12, 0, 21, 0, 25, 0, 7, 0, 22, 0, 11, 0, 14, 0, 23, 0, 21, 0, 3, 0, 24, 0, 26, 0, 9, 0, 25, 0, 22, 0, 0, 0, 26, 0, 23, 0, 69, 0, 71, 0, 70, 0, 72, 0, 74, 0, 73, 0, 75, 0, 77, 0, 76, 0, 78, 0, 80, 0, 79, 0, 81, 0, 83, 0, 82, 0, 84, 0, 86, 0, 85, 0, 87, 0, 89, 0, 88, 0, 90, 0, 92, 0, 91, 0, 93, 0, 95, 0, 94, 0, 96, 0, 98, 0, 97, 0, 99, 0, 101, 0, 100, 0, 102, 0, 104, 0, 103, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 168,
+"material": SubResource( 6 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 105
+}
+surfaces/1 = {
+"aabb": AABB( -0.170399, -0.40971, -0.181468, 0.310311, 0.868352, 0.325908 ),
+"array_data": PoolByteArray( 253, 175, 19, 55, 252, 175, 0, 60, 6, 126, 248, 0, 203, 173, 75, 55, 164, 46, 0, 60, 6, 126, 248, 0, 104, 46, 231, 54, 195, 174, 0, 60, 6, 126, 248, 0, 212, 175, 93, 182, 39, 44, 0, 60, 0, 130, 7, 0, 110, 174, 82, 182, 20, 173, 0, 60, 0, 130, 253, 0, 122, 48, 117, 182, 49, 40, 0, 60, 252, 130, 249, 0, 31, 48, 24, 55, 142, 37, 0, 60, 2, 126, 244, 0, 104, 46, 231, 54, 195, 174, 0, 60, 2, 126, 244, 0, 203, 173, 75, 55, 164, 46, 0, 60, 2, 126, 244, 0, 104, 46, 231, 54, 195, 174, 0, 60, 6, 126, 253, 0, 96, 165, 246, 54, 206, 177, 0, 60, 6, 126, 253, 0, 253, 175, 19, 55, 252, 175, 0, 60, 6, 126, 253, 0, 31, 48, 24, 55, 142, 37, 0, 60, 255, 125, 235, 0, 203, 173, 75, 55, 164, 46, 0, 60, 255, 125, 235, 0, 97, 43, 86, 55, 39, 47, 0, 60, 255, 125, 235, 0, 253, 175, 19, 55, 252, 175, 0, 60, 247, 126, 250, 0, 115, 177, 35, 55, 57, 37, 0, 60, 247, 126, 250, 0, 203, 173, 75, 55, 164, 46, 0, 60, 247, 126, 250, 0, 219, 35, 72, 182, 84, 176, 0, 60, 255, 130, 252, 0, 94, 48, 99, 182, 76, 172, 0, 60, 252, 130, 252, 0, 44, 44, 142, 182, 102, 48, 0, 60, 242, 130, 254, 0, 237, 169, 27, 182, 159, 48, 0, 60, 239, 133, 23, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 4, 0, 5, 0, 18, 0, 18, 0, 5, 0, 19, 0, 5, 0, 3, 0, 20, 0, 20, 0, 3, 0, 21, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 30,
+"material": SubResource( 7 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 22
+}
+
+[sub_resource type="CapsuleShape" id=9]
+
+radius = 0.446664
+height = 2.54164
+
+[node name="Box" type="StaticBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 3
+collision_mask = 3
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Box" type="MeshInstance" parent="." index="0"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = "Idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Idle = SubResource( 3 )
+blend_times = [  ]
+
+[node name="Arrow" type="Spatial" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30737, 0 )
+
+[node name="Arrow" type="MeshInstance" parent="Arrow" index="0"]
+
+transform = Transform( 0.984838, 0, 0.173476, 0, 1, 0, -0.173476, 0, 0.984838, 0, -0.2458, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wood" type="MeshInstance" parent="Arrow" index="1"]
+
+transform = Transform( 0.5, 0, 0, 0, 0.0516253, -0.497328, 0, 0.497328, 0.0516253, 0, -0.16032, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 8 )
+skeleton = NodePath("..")
+material/0 = null
+material/1 = null
+_sections_unfolded = [ "LOD", "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1.25874, 0 )
+shape = SubResource( 9 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Label" type="Label" parent="CanvasLayer" index="0"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -136.0
+margin_top = 5.0
+margin_right = -103.0
+margin_bottom = 19.0
+rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
+
+
