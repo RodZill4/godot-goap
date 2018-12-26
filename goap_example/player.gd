@@ -106,7 +106,7 @@ func _input(event):
 			if obj.distance < 1.0 and obj.object.has_method("action"):
 				obj.object.action(self)
 			else:
-				grow_tree()
+				do_grow_tree()
 		elif event.get_scancode() == KEY_E:
 			eat_fruit()
 		elif event.get_scancode() == KEY_G:
@@ -195,6 +195,17 @@ func eat_fruit():
 		return true
 	return false
 
+func do_grow_tree():
+	if held == null or held.get_object_type() != "fruit":
+		return false
+	held.free()
+	held = null
+	update_held_icon()
+	var tree = preload("res://goap_example/tree/tree.tscn").instance()
+	tree.translation = translation + 2.0*Vector3(sin(rotation.y), 0.0, cos(rotation.y))
+	get_parent().add_child(tree)
+	return true
+
 func grow_tree():
 	# Check we have a fruit
 	if held == null or held.get_object_type() != "fruit":
@@ -222,13 +233,7 @@ func grow_tree():
 	if !yield(self, "run_end"):
 		emit_signal("action_end", false)
 	# Destroy fruit and create growing tree
-	held.free()
-	held = null
-	update_held_icon()
-	var tree = preload("res://goap_example/tree/tree.tscn").instance()
-	tree.translation = translation + 2.0*Vector3(sin(rotation.y), 0.0, cos(rotation.y))
-	get_parent().add_child(tree)
-	emit_signal("action_end", true)
+	emit_signal("action_end", do_grow_tree())
 
 func wait():
 	# The wait action triggers an error so the plan is recalculated 

@@ -8,11 +8,13 @@
 
 config_version=3
 
-_global_script_classes=null
-_global_script_class_icons=null
-
 [application]
 
 config/name="goap"
 run/main_scene="res://goap_example/test.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720

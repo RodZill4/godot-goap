@@ -2,8 +2,6 @@
 
 [ext_resource path="res://goap_example/box/box_wood.gd" type="Script" id=1]
 
-
-
 [sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
