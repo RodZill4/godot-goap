@@ -18,7 +18,7 @@ class State:
 		return (condition.mask & mask) == condition.mask and (value & condition.mask) == condition.value
 	
 	func apply(effect):
-		return new((value & (~effect.mask)) | (effect.value & effect.mask), mask | effect.mask)
+		return get_script().new((value & mask & (~effect.mask)) | (effect.value & effect.mask), mask | effect.mask)
 	
 	func tostring():
 		return "("+str(value)+", "+str(mask)+")"
@@ -77,12 +77,18 @@ func parse_state(string):
 			value |= rv
 	return State.new(value, mask)
 
-func parse_actions():
+func clear_actions():
 	state_atoms = []
 	actions = []
+
+func add_action(function, preconditions, effect, cost):
+	var action = Action.new(function, parse_state(preconditions), parse_state(effect), cost)
+	actions.append(action)
+
+func parse_actions():
+	clear_actions()
 	for a in get_children():
-		var action = Action.new(a.action if (a.action != null) else a.name, parse_state(a.preconditions), parse_state(a.effect), a.cost)
-		actions.append(action)
+		add_action(a.action if (a.action != null) else a.name, a.preconditions, a.effect, a.cost)
 
 func plan(s, g):
 	#print("Plan from '"+s+"' to '"+g+"'")
@@ -134,7 +140,7 @@ func astar(nodes, ends, goal, index):
 	var node = nodes[index]
 	for a in actions:
 		if node.state.check(a.preconditions):
-			var next_state = State.new((node.state.value & node.state.mask & (~a.effect.mask)) | (a.effect.value & a.effect.mask), node.state.mask | a.effect.mask)
+			var next_state = node.state.apply(a.effect)
 			var cost = node.cost + a.cost
 			var found = false
 			#print("  "+a.name+"("+state_to_string(a.preconditions)+", "+state_to_string(a.effect)+") -> "+state_to_string(next_state))
