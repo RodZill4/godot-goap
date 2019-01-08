@@ -244,12 +244,13 @@ func wait():
 func goap_current_state():
 	var state = ""
 	for o in ["axe", "wood", "fruit"]:
-		if !holds(o):
-			state += "!"
-		state += "has_"
-		state += o
-		state += " "
-	for o in ["axe", "wood", "fruit", "tree", "box"]:
+		if holds(o):
+			state += "has_"+o+" sees_"+o+" "
+		else:
+			state += "!has_"+o+" "
+			if get_nearest_object(o).object != null:
+				state += "sees_"+o+" "
+	for o in ["tree", "box"]:
 		if get_nearest_object(o).object == null:
 			state += "!"
 		state += "sees_"
