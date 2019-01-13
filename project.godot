@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="goap"
+config/name="GOAP"
 run/main_scene="res://goap_example/test.tscn"
 config/icon="res://icon.png"
 
