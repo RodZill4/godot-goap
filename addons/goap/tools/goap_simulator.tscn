@@ -1,0 +1,85 @@
+[gd_scene format=2]
+
+[node name="GoapSimulator" type="WindowDialog"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -489.0
+margin_bottom = -271.0
+window_title = "GOAP Simulator"
+resizable = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+margin_right = 791.0
+margin_bottom = 425.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Actions" type="HSplitContainer" parent="VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/TabContainer/Actions"]
+margin_right = 100.0
+margin_bottom = 389.0
+rect_min_size = Vector2( 100, 0 )
+items = [ "[new action]", null, false ]
+
+[node name="columns" type="HBoxContainer" parent="VBoxContainer/TabContainer/Actions"]
+margin_left = 112.0
+margin_right = 783.0
+margin_bottom = 389.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Simulator" type="HBoxContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 301.0
+margin_top = 429.0
+margin_right = 489.0
+margin_bottom = 449.0
+size_flags_horizontal = 4
+
+[node name="OK" type="Button" parent="VBoxContainer/Buttons"]
+margin_right = 60.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+text = "OK"
+
+[node name="Apply" type="Button" parent="VBoxContainer/Buttons"]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="Cancel" type="Button" parent="VBoxContainer/Buttons"]
+margin_left = 128.0
+margin_right = 188.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_horizontal = 3
+text = "Cancel"
+

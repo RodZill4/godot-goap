@@ -6,7 +6,17 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "ActionPlanner",
+"language": "GDScript",
+"path": "res://addons/goap/action_planner.gd"
+} ]
+_global_script_class_icons={
+"ActionPlanner": "res://addons/goap/action_planner.png"
+}
 
 [application]
 
@@ -18,3 +28,7 @@ config/icon="res://icon.png"
 
 window/size/width=1280
 window/size/height=720
+
+[editor_plugins]
+
+enabled=PoolStringArray( "goap" )

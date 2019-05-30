@@ -83,7 +83,7 @@ func get_nearest_object(object_type = null):
 	var nearest_distance = 100
 	var nearest_object = null
 	for o in $Detect.get_overlapping_bodies():
-		if o.is_inside_tree():
+		if o.is_inside_tree() and o.translation.y < 0.5:
 			var distance = (global_transform.origin - o.global_transform.origin).length()
 			if o != self and o.get_script() != null and (object_type == null or o.get_object_type() == object_type) and distance < nearest_distance:
 				nearest_distance = distance
@@ -269,10 +269,14 @@ func goap_current_goal():
 	return goal
 
 func goap():
+	var start_time = OS.get_unix_time()
+	var count = 0
 	var action_planner = get_node("ActionPlanner")
 	if action_planner == null:
 		return
 	while true:
+		count += 1
+		print("%d: Planning (%d)..." % [ OS.get_unix_time() - start_time, count ])
 		var plan = action_planner.plan(goap_current_state(), goap_current_goal())
 		$UI/ActionQueue.text = PoolStringArray(plan).join(", ")
 		# execute plan

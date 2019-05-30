@@ -1,4 +1,6 @@
+tool
 extends Node
+class_name ActionPlanner, "res://addons/goap/action_planner.png"
 
 var state_atoms = []
 var actions = []
