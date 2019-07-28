@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/goap/tools/editor_tab.gd" type="Script" id=1]
+[ext_resource path="res://addons/goap/icons/plus.png" type="Texture" id=2]
+[ext_resource path="res://addons/goap/icons/plus_g.png" type="Texture" id=3]
+[ext_resource path="res://addons/goap/icons/minus.png" type="Texture" id=4]
+[ext_resource path="res://addons/goap/icons/minus_g.png" type="Texture" id=5]
+[ext_resource path="res://addons/goap/tools/atom_list.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/goap/icons/arrow.png" type="Texture" id=7]
+
+[node name="Editor" type="HSplitContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 684.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 16.0
+
+[node name="NewAction" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 2 )
+texture_disabled = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 20.0
+margin_top = 1.0
+margin_right = 180.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Actions"
+align = 1
+
+[node name="DeleteAction" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 184.0
+margin_right = 200.0
+margin_bottom = 16.0
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource( 4 )
+texture_disabled = ExtResource( 5 )
+
+[node name="ActionList" type="Tree" parent="VBoxContainer"]
+margin_top = 20.0
+margin_right = 200.0
+margin_bottom = 684.0
+rect_min_size = Vector2( 200, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+hide_root = true
+
+[node name="grid" type="GridContainer" parent="."]
+margin_left = 212.0
+margin_right = 1272.0
+margin_bottom = 684.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Label1" type="Label" parent="grid"]
+margin_right = 513.0
+margin_bottom = 14.0
+text = "Preconditions"
+align = 1
+
+[node name="Spacer" type="Control" parent="grid"]
+margin_left = 517.0
+margin_right = 542.0
+margin_bottom = 14.0
+
+[node name="Label2" type="Label" parent="grid"]
+margin_left = 546.0
+margin_right = 1059.0
+margin_bottom = 14.0
+text = "Effect"
+align = 1
+
+[node name="Preconditions" parent="grid" instance=ExtResource( 6 )]
+
+[node name="Arrow" type="TextureRect" parent="grid"]
+margin_left = 517.0
+margin_top = 338.0
+margin_right = 542.0
+margin_bottom = 363.0
+size_flags_vertical = 4
+texture = ExtResource( 7 )
+
+[node name="Effect" parent="grid" instance=ExtResource( 6 )]
+margin_left = 546.0
+margin_right = 1059.0
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewAction" to="." method="add_action"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/DeleteAction" to="." method="delete_current_action"]
+[connection signal="gui_input" from="VBoxContainer/ActionList" to="." method="on_action_list_gui_input"]
+[connection signal="item_edited" from="VBoxContainer/ActionList" to="." method="on_action_renamed"]
+[connection signal="item_selected" from="VBoxContainer/ActionList" to="." method="on_action_selected"]
+[connection signal="nothing_selected" from="VBoxContainer/ActionList" to="." method="on_no_action_selected"]
+[connection signal="state_updated" from="grid/Preconditions" to="." method="update_preconditions"]
+[connection signal="state_updated" from="grid/Effect" to="." method="update_effect"]

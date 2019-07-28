@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/goap/tools/atom_list.gd" type="Script" id=1]
+
+[node name="AtomList" type="ItemList"]
+margin_top = 18.0
+margin_right = 513.0
+margin_bottom = 684.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fixed_icon_size = Vector2( 10, 10 )
+script = ExtResource( 1 )
+[connection signal="item_selected" from="." to="." method="on_item_selected"]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/goap/tools/simulator_tab.gd" type="Script" id=1]
+[ext_resource path="res://addons/goap/tools/atom_list.tscn" type="PackedScene" id=2]
+
+[node name="Simulator" type="GridContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+script = ExtResource( 1 )
+
+[node name="Label1" type="Label" parent="."]
+margin_right = 421.0
+margin_bottom = 14.0
+text = "Initial State"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 425.0
+margin_right = 846.0
+margin_bottom = 14.0
+text = "Goal"
+align = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 850.0
+margin_right = 1271.0
+margin_bottom = 14.0
+text = "Actions"
+align = 1
+
+[node name="Initial" parent="." instance=ExtResource( 2 )]
+margin_right = 421.0
+
+[node name="Goal" parent="." instance=ExtResource( 2 )]
+margin_left = 425.0
+margin_right = 846.0
+
+[node name="Actions" type="ItemList" parent="."]
+margin_left = 850.0
+margin_top = 18.0
+margin_right = 1271.0
+margin_bottom = 684.0
+size_flags_horizontal = 3
+[connection signal="state_updated" from="Initial" to="." method="on_initial_updated"]
+[connection signal="state_updated" from="Goal" to="." method="on_goal_updated"]

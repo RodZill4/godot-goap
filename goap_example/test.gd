@@ -1,9 +1,5 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 func _ready():
 	seed(OS.get_unix_time())
 	var tree_positions = PoolVector2Array()

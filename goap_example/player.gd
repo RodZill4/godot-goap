@@ -79,7 +79,7 @@ func run_to(p):
 	blocked_time = 0.0
 	target = p
 
-func get_nearest_object(object_type = null):
+func find_nearest_object(object_type = null):
 	var nearest_distance = 100
 	var nearest_object = null
 	for o in $Detect.get_overlapping_bodies():
@@ -102,7 +102,7 @@ func count_visible_objects(object_type):
 func _input(event):
 	if event is InputEventKey and event.is_pressed():
 		if event.get_scancode() == KEY_SPACE:
-			var obj = get_nearest_object()
+			var obj = find_nearest_object()
 			if obj.distance < 1.0 and obj.object.has_method("action"):
 				obj.object.action(self)
 			else:
@@ -125,7 +125,7 @@ func update_held_icon():
 		$UI/Held.texture = load("res://goap_example/"+held.get_object_type()+"/"+held.get_object_type()+".png")
 
 func pickup_object(object_type):
-	var nearest = get_nearest_object(object_type)
+	var nearest = find_nearest_object(object_type)
 	if nearest.object == null or nearest.distance > 1.0:
 		return false
 	pickup(nearest.object)
@@ -141,7 +141,7 @@ func pickup(object):
 	update_held_icon()
 
 func store_held(object_type):
-	if held != null && held.get_object_type() == object_type:
+	if held != null and held.get_object_type() == object_type:
 		held = null
 		update_held_icon()
 		return true
@@ -153,7 +153,7 @@ func store_held(object_type):
 func pickup_nearest_object(object_type):
 	if holds(object_type):
 		return false
-	var object = get_nearest_object(object_type).object
+	var object = find_nearest_object(object_type).object
 	if object == null:
 		return false
 	run_to(object.translation)
@@ -171,7 +171,7 @@ func pickup_wood():
 	return pickup_nearest_object("wood")
 
 func use_nearest_object(object_type):
-	var object = get_nearest_object(object_type).object
+	var object = find_nearest_object(object_type).object
 	if object == null:
 		return false
 	run_to(object.translation)
@@ -241,17 +241,17 @@ func wait():
 
 # GOAP stuff
 
-func goap_current_state():
+func get_goap_current_state():
 	var state = ""
 	for o in ["axe", "wood", "fruit"]:
 		if holds(o):
 			state += "has_"+o+" sees_"+o+" "
 		else:
 			state += "!has_"+o+" "
-			if get_nearest_object(o).object != null:
+			if find_nearest_object(o).object != null:
 				state += "sees_"+o+" "
 	for o in ["tree", "box"]:
-		if get_nearest_object(o).object == null:
+		if find_nearest_object(o).object == null:
 			state += "!"
 		state += "sees_"
 		state += o
@@ -259,12 +259,14 @@ func goap_current_state():
 	state += " hungry" if (life < 75) else " !hungry"
 	return state
 
-func goap_current_goal():
+func get_goap_current_goal():
 	var goal
+	# the goal is to plant trees then gather wood when there are enough trees
 	if count_visible_objects("tree") < 10:
 		goal = "sees_growing_tree"
 	else:
 		goal = "wood_stored"
+	# in any case, avoid starvation
 	goal += " !hungry"
 	return goal
 
@@ -277,7 +279,7 @@ func goap():
 	while true:
 		count += 1
 		print("%d: Planning (%d)..." % [ OS.get_unix_time() - start_time, count ])
-		var plan = action_planner.plan(goap_current_state(), goap_current_goal())
+		var plan : Array = action_planner.plan(get_goap_current_state(), get_goap_current_goal())
 		$UI/ActionQueue.text = PoolStringArray(plan).join(", ")
 		# execute plan
 		for a in plan:

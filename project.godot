@@ -10,12 +10,18 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "ActionPlanner",
+"class": "GOAPAction",
 "language": "GDScript",
-"path": "res://addons/goap/action_planner.gd"
+"path": "res://addons/goap/goap_action.gd"
+}, {
+"base": "Node",
+"class": "GOAPActionPlanner",
+"language": "GDScript",
+"path": "res://addons/goap/goap_action_planner.gd"
 } ]
 _global_script_class_icons={
-"ActionPlanner": "res://addons/goap/action_planner.png"
+"GOAPAction": "",
+"GOAPActionPlanner": "res://addons/goap/goap_action_planner.png"
 }
 
 [application]

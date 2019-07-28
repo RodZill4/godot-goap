@@ -2,8 +2,8 @@
 
 [ext_resource path="res://goap_example/test.gd" type="Script" id=1]
 [ext_resource path="res://goap_example/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/goap/action_planner.gd" type="Script" id=3]
-[ext_resource path="res://addons/goap/action.gd" type="Script" id=4]
+[ext_resource path="res://addons/goap/goap_action_planner.gd" type="Script" id=3]
+[ext_resource path="res://addons/goap/goap_action.gd" type="Script" id=4]
 [ext_resource path="res://goap_example/camera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://goap_example/axe/axe.tscn" type="PackedScene" id=6]
 [ext_resource path="res://goap_example/box/box_wood.tscn" type="PackedScene" id=7]
@@ -117,4 +117,3 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 0.00444228, -0.99999, 0, 0.99999, 0.00444228, 0.029772, 0.0990074, -2.88898 )
 
 [node name="Box" parent="." instance=ExtResource( 7 )]
-

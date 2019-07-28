@@ -1,13 +1,13 @@
 tool
 extends Node
-class_name ActionPlanner, "res://addons/goap/action_planner.png"
+class_name GOAPActionPlanner, "res://addons/goap/goap_action_planner.png"
 
 var state_atoms = []
 var actions = []
 
 class State:
-	var value
-	var mask
+	var value: int
+	var mask: int
 	
 	func _init(v, m):
 		value = v
@@ -22,14 +22,24 @@ class State:
 	func apply(effect):
 		return get_script().new((value & mask & (~effect.mask)) | (effect.value & effect.mask), mask | effect.mask)
 	
-	func tostring():
-		return "("+str(value)+", "+str(mask)+")"
+	func tostring(atoms = null):
+		if atoms != null:
+			var rv = PoolStringArray()
+			for i in range(atoms.size()):
+				if mask & (1 << i) != 0:
+					if value & (1 << i) == 0:
+						rv.append("!"+atoms[i])
+					else:
+						rv.append(atoms[i])
+			return rv.join(" ")
+		else:
+			return "("+str(value)+", "+str(mask)+")"
 
 class Action:
-	var name
-	var preconditions
-	var effect
-	var cost
+	var name: String
+	var preconditions: State
+	var effect: State
+	var cost: float
 	
 	func _init(n, p, e, c):
 		name = n
@@ -37,14 +47,14 @@ class Action:
 		effect = e
 		cost = c
 
-	func tostring():
-		return name +"("+preconditions.tostring()+", "+effect.tostring()+", "+str(cost)+")"
+	func tostring(atoms = null):
+		return name +"("+preconditions.tostring(atoms)+", "+effect.tostring(atoms)+", "+str(cost)+")"
 
 class AStarNode:
-	var state
-	var previous
+	var state: State
+	var previous: int
 	var last_action
-	var cost
+	var cost: float
 	
 	func _init(s, p, la, c):
 		state = s
@@ -55,14 +65,14 @@ class AStarNode:
 func _ready():
 	parse_actions()
 
-func state_index(n):
+func state_index(n: String):
 	var rv = state_atoms.find(n)
 	if rv == -1:
 		rv = state_atoms.size()
 		state_atoms.append(n)
 	return rv
 
-func parse_state(string):
+func parse_state(string: String) -> State:
 	var value = 0
 	var mask = 0
 	var regex = RegEx.new()
@@ -83,19 +93,26 @@ func clear_actions():
 	state_atoms = []
 	actions = []
 
-func add_action(function, preconditions, effect, cost):
-	var action = Action.new(function, parse_state(preconditions), parse_state(effect), cost)
+func add_action(action_name, preconditions, effect, cost):
+	var action = Action.new(action_name, parse_state(preconditions), parse_state(effect), cost)
 	actions.append(action)
 
-func parse_actions():
-	clear_actions()
+func parse_actions(sort_atoms : bool = false, keep_atoms = false):
+	if !keep_atoms:
+		state_atoms = []
+	actions = []
 	for a in get_children():
-		add_action(a.action if (a.action != null) else a.name, a.preconditions, a.effect, a.cost)
+		add_action(a.name, a.preconditions, a.effect, a.cost)
+	if !keep_atoms and sort_atoms:
+		state_atoms.sort()
+		actions = []
+		for a in get_children():
+			add_action(a.name, a.preconditions, a.effect, a.cost)
 
-func plan(s, g):
-	#print("Plan from '"+s+"' to '"+g+"'")
-	var state = parse_state(s)
-	var goal = parse_state(g)
+func plan(state, goal) -> Array:
+	return plan_from_states(parse_state(state), parse_state(goal))
+
+func plan_from_states(state : State, goal : State) -> Array:
 	var nodes = []
 	var ends = []
 	nodes.append(AStarNode.new(state, 0, null, 0))
@@ -114,7 +131,6 @@ func plan(s, g):
 			for j in actions.size():
 				plan.insert(j, actions[j])
 			i = nodes[i].previous
-	#print("Explored "+str(nodes.size())+" states.")
 	return plan
 
 func fix_nodes_cost(nodes, index_list, difference):
@@ -128,19 +144,13 @@ func fix_nodes_cost(nodes, index_list, difference):
 		fix_nodes_cost(nodes, new_index_list, difference)
 
 func state_to_string(s):
-	var rv = ""
-	for i in range(state_atoms.size()):
-		if s.mask & (1 << i) != 0:
-			if s.value & (1 << i) == 0:
-				rv += "!"
-			rv += state_atoms[i]
-			rv += " "
-	return rv
+	return s.tostring(state_atoms)
 
 func astar(nodes, ends, goal, index):
 	#print("Starting from node "+str(index))
 	var node = nodes[index]
 	for a in actions:
+		#print(a.tostring(state_atoms))
 		if node.state.check(a.preconditions):
 			var next_state = node.state.apply(a.effect)
 			var cost = node.cost + a.cost
@@ -153,7 +163,7 @@ func astar(nodes, ends, goal, index):
 						#print("Found better cost for node "+str(n))
 						nodes[n].last_action = a.name
 						nodes[n].previous = index
-						fix_nodes_cost(nodes, [ n ], nodes[n].cost - cost)
+						fix_nodes_cost(nodes, [n], nodes[n].cost - cost)
 					break
 			if !found:
 				nodes.append(AStarNode.new(next_state, index, a.name, cost))
