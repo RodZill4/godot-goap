@@ -158,8 +158,8 @@ func pickup_nearest_object(object_type):
 		return false
 	run_to(object.translation)
 	if !yield(self, "run_end"):
-		emit_signal("action_end", false)
-	emit_signal("action_end", pickup_object(object_type))
+		return false
+	return pickup_object(object_type)
 
 func pickup_axe():
 	return pickup_nearest_object("axe")
@@ -176,8 +176,8 @@ func use_nearest_object(object_type):
 		return false
 	run_to(object.translation)
 	if !yield(self, "run_end"):
-		emit_signal("action_end", false)
-	emit_signal("action_end", object.action(self))
+		return false
+	return object.action(self)
 
 func cut_tree():
 	return use_nearest_object("tree")
@@ -231,9 +231,9 @@ func grow_tree():
 	# Try to run to location and return false uon failure
 	run_to(p)
 	if !yield(self, "run_end"):
-		emit_signal("action_end", false)
+		return false
 	# Destroy fruit and create growing tree
-	emit_signal("action_end", do_grow_tree())
+	return do_grow_tree()
 
 func wait():
 	# The wait action triggers an error so the plan is recalculated 
@@ -286,12 +286,12 @@ func goap():
 			var error = false
 			# Actions are implemented as methods
 			# - immediate actions return a boolean status
-			# - non immediate actions (that call yield) send their status using the action_end signal
+			# - non immediate actions (that call yield) return a GDScriptFunctionState
 			if has_method(a):
 				print("Calling action function "+a)
 				var status = call(a)
-				if typeof(status) == TYPE_OBJECT and status is GDScriptFunctionState:
-					status = yield(self, "action_end")
+				while status is GDScriptFunctionState:
+					status = yield(status, "completed")
 				if typeof(status) != TYPE_BOOL:
 					print("Return value of "+a+" is not a boolean")
 					status = false
